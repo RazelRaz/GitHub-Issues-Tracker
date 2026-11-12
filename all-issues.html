@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git-issues-tracker</title>
+    <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
+    <!-- fontawesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- daisyui & tailwindcss -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- theme css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#F8FAFC]">
+    
+    <header id="header_area" class="">
+        <div class="head_container">
+            <div class="navbar bg-white shadow-sm">
+                <div class="flex-1">
+                    <a class="btn btn-ghost text-xl"><img class="w-10" src="assets/github-logo.png" alt="logo"><span class="hidden sm:block md:block font-semibold text-2xl">GitHub Issues Tracker</span></a>
+                </div>
+                <div class="flex gap-2">
+                    <label class="input">
+                        <svg id="btn_search" class="h-[1em] opacity-50 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                            stroke-width="2.5"
+                            fill="none"
+                            stroke="currentColor"
+                            >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                            </g>
+                        </svg>
+                        <input id="search_input" type="search" required placeholder="Search issues" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="button_area pt-[60px] pb-3">
+        <div class="button_container bg-white w-[1110px] m-auto p-6 rounded-lg shadow-sm">
+            <div id="filter-buttons" class="flex gap-3">
+                <button id="all_btn" class="btn w-24">All</button>
+                <button id="open_btn" class="btn w-24">Open</button>
+                <button id="closed_btn" class="btn w-24">Closed</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="all_issues_area pb-16">
+        <div class="all_issues_container bg-[#FBFBFB] w-[1110px] m-auto rounded-t-lg shadow-md">
+            <div class="issues_header bg-white flex justify-between p-6 rounded-t-lg border-b border-[#ccc]">
+                <div class="issues_counter_left flex gap-2 justify-center items-center">
+                    <img src="assets/Group 1.png" alt="image">
+                    <div class="">
+                        <h4 class="font-semibold text-xl"><span id="issues_count">56</span> Issues</h4>
+                        <p class="text-[#64748B] text-[16px]">Track and manage your project issues</p>
+                    </div>
+                </div>
+                <div class="issues_counter_right flex items-center justify-center gap-4">
+                    <div class="flex items-center justify-center gap-2">
+                        <img src="assets/Ellipse 2.png" alt="open">
+                        <p class="font-medium text-[16px]">Open</p>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <img src="assets/Ellipse 2 (1).png" alt="Closed">
+                        <p class="font-medium text-[16px]">Closed</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="all-issues" class="p-6 grid grid-cols-4 gap-3">
+                <!-- issues area start -->
+                <!-- <div class="single_issue bg-white space-y-4 p-4 border-t-[3px] border-[#00A96E] rounded-t-lg">
+                    <div class="flex justify-between items-center">
+                        <img src="assets/Open-Status.png" alt="icon">
+                        <button class="bg-red-200 text-[#EF4444] rounded-full py-[1px] px-6 font-medium uppercase">HIGH</button>
+                    </div>
+                    <h3 class="font-semibold text-[16px] text-[#1F2937]">Fix navigation menu on mobile devices</h3>
+                    <p class="text-[#64748B] text-xs">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div class="">
+                        <button class="bg-red-200 text-[#EF4444] rounded-full py-[1px] px-6 font-medium uppercase border border-red-300">Bug</button>
+                        <button class="bg-orange-100 text-[#D97706] rounded-full py-[1px] px-2 font-medium uppercase border border-red-300">Help wanted</button>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-[#64748B] text-[12px] font-medium">#1 by john_doe</p>
+                        <p class="text-[#64748B] text-[12px] font-medium">1/15/2024</p>
+                    </div>
+                </div> -->
+                <!-- issues area start ends -->
+
+                <!-- issues area start -->
+                <!-- <div class="single_issue bg-white space-y-4 p-4 border-t-[3px] border-[#00A96E] rounded-t-lg">
+                    <div class="flex justify-between items-center">
+                        <img src="assets/Open-Status.png" alt="icon">
+                        <button class="bg-orange-100 text-[#D97706] rounded-full py-[1px] px-6 font-medium uppercase">Medium</button>
+                    </div>
+                    <h3 class="font-semibold text-[16px] text-[#1F2937]">Fix navigation menu on mobile devices</h3>
+                    <p class="text-[#64748B] text-xs">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div>
+                        <button class="bg-red-200 text-[#EF4444] rounded-full py-[1px] px-6 font-medium uppercase border border-red-300">Bug</button>
+                        <button class="bg-orange-100 text-[#D97706] rounded-full py-[1px] px-2 font-medium uppercase border border-red-300">Help wanted</button>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-[#64748B] text-[12px] font-medium">#1 by john_doe</p>
+                        <p class="text-[#64748B] text-[12px] font-medium">1/15/2024</p>
+                    </div>
+                </div> -->
+                <!-- issues area start ends -->
+
+                <!-- issues area start -->
+                <!-- <div class="single_issue bg-white space-y-4 p-4 border-t-[3px] border-[#00A96E] rounded-t-lg">
+                    <div class="flex justify-between items-center">
+                        <img src="assets/Open-Status.png" alt="icon">
+                        <button class="bg-slate-300 text-[#9CA3AF] rounded-full py-[1px] px-6 font-medium uppercase">HIGH</button>
+                    </div>
+                    <h3 class="font-semibold text-[16px] text-[#1F2937]">Fix navigation menu on mobile devices</h3>
+                    <p class="text-[#64748B] text-xs">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div>
+                        <button class="bg-red-200 text-[#EF4444] rounded-full py-[1px] px-6 font-medium uppercase border border-red-300">Bug</button>
+                        <button class="bg-orange-100 text-[#D97706] rounded-full py-[1px] px-2 font-medium uppercase border border-red-300">Help wanted</button>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-[#64748B] text-[12px] font-medium">#1 by john_doe</p>
+                        <p class="text-[#64748B] text-[12px] font-medium">1/15/2024</p>
+                    </div>
+                </div> -->
+                <!-- issues area start ends -->
+
+                <!-- issues area start -->
+                <!-- <div class="single_issue bg-white space-y-4 p-4 border-t-[3px] border-[#A855F7] rounded-t-lg">
+                    <div class="flex justify-between items-center">
+                        <img src="assets/Closed- Status .png" alt="icon">
+                        <button class="bg-red-200 text-[#EF4444] rounded-full py-[1px] px-6 font-medium uppercase">HIGH</button>
+                    </div>
+                    <h3 class="font-semibold text-[16px] text-[#1F2937]">Fix navigation menu on mobile devices</h3>
+                    <p class="text-[#64748B] text-xs">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div>
+                        <button class="bg-green-200 text-green-800 rounded-full py-[1px] px-6 font-medium uppercase border border-green-800">Bug</button>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-[#64748B] text-[12px] font-medium">#1 by john_doe</p>
+                        <p class="text-[#64748B] text-[12px] font-medium">1/15/2024</p>
+                    </div>
+                </div> -->
+                <!-- issues area start ends -->
+            </div>
+            
+        </div>
+    </section>
+
+
+    <!-- Modal Start -->
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+    <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
+        <div id="modalBox" class="modal-box">
+            <div id="detailsModel" class="text-center space-y-3">
+                
+            </div>
+
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+
+
+
+    <script src="scripts/all-issues.js"></script>
+</body>
+</html>
